@@ -16,13 +16,14 @@
 				<view class="order-item-price">{{priceFormat(item.price)}}</view>
 			</view>
 			<!-- 优惠信息 -->
-			<view class="order-item" wx:if="{{checkPromotion(promotion)}}">
+			<!-- <view class="order-item" wx:if="{{checkPromotion(promotion)}}">
 				<view class="order-item-l">
 					<text class="order-promotion-icon">减</text>满减优惠
 				</view>
 				<view class="order-promotion-price">- {{priceFormat(promotion)}}</view>
-			</view>
+			</view> -->
 			<!-- 小计 -->
+
 			<view class="order-item">
 				<view class="order-item-l">小计</view>
 				<view class="order-total-price">{{priceFormat(price)}}</view>

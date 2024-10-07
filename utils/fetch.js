@@ -8,7 +8,7 @@ module.exports = function (path, data, method) {// 这行表示这个文件名fe
       method,
       data,
       header: {
-        'Content-Type': 'json',
+        'Content-Type': 'application/json',
         'X-Requested-With': 'XMLHttpRequest',
         'Cookie': sess ? 'PHPSESSID=' + sess : ''
       },

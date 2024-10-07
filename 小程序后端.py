@@ -21,6 +21,54 @@ basedir = os.path.abspath(os.path.dirname(__file__))  # 定义一个根目录 �
 UPLOAD_ROOT_PATH = 'pic_data'
 # http://172.27.118.204:5050
 
+
+from flask import Flask, request
+lastorder=None
+
+@app.route('/food/pay', methods=['GET', 'POST'])
+def editorData22221211212312222():
+    return jsonify(lastorder)
+
+
+@app.route('/food/order', methods=['GET', 'POST'])
+def editorData2222121222():
+    global lastorder
+    ttttt=request.args.get('id')
+    ttttt2=request.args.get('comment')
+    if ttttt2:
+        lastorder['comment']=ttttt2
+    print('是否取数据', ttttt)
+    if ttttt:
+        print('343423423',ttttt)
+        return jsonify(lastorder)
+    print(request)
+    data=(request.json)
+    if 'id' in data:
+        return jsonify(lastorder)
+        
+    print(data,99999999999999999999999)
+    p=0
+    print(21321312312)
+    print(data,4355555555555555555555555555555)
+    for i in data['order']:
+        kk=data['order'][i]
+        print(65436346435342534534,kk)
+        p+=float(kk['price'])*float(kk['number'])
+    # 食物的图片使用网络图片url和本地路径都可以.
+    # data=data['order']
+    data['price']=p
+    data['order_id']=0
+
+    lastorder=data
+    print('sdaflkasdjflk;asdjflk',data)
+    return jsonify(data)
+
+
+
+
+
+
+
 @app.route('/food/list', methods=['GET', 'POST'])
 def editorData222222():
     # 食物的图片使用网络图片url和本地路径都可以.
@@ -46,28 +94,28 @@ def editorData222222():
         
         
         },
-        {
+        {'id':3,
         'name':'食物4',
         'price':'12',
         'image_url':'/images/index/b_2.jpg',
         
         
         },
-        {
+        {'id':4,
         'name':'食物5',
         'price':'12',
         'image_url':'/images/index/b_2.jpg',
         
         
         },
-        {
+        {'id':5,
         'name':'食物6',
         'price':'12',
         'image_url':'/images/index/b_2.jpg',
         
         
         },
-        {
+        {'id':6,
         'name':'食物7',
         'price':'12',
         'image_url':'/images/index/b_2.jpg',
@@ -75,12 +123,14 @@ def editorData222222():
         
         }
         ]},{'name':'类别2','food':[{
+            'id':0,
         'name':'食物21',
         'price':'11',
         'image_url':'/images/index/b_2.jpg',
         
         
         },{
+            'id':1,
         'name':'食物22',
         'price':'12',
         'image_url':'/images/index/b_2.jpg',
@@ -88,12 +138,13 @@ def editorData222222():
         
         }
         ]},{'name':'类别3','food':[{
+            'id':0,
         'name':'食物31',
         'price':'11',
         'image_url':'/images/index/b_2.jpg',
         
         
-        },{
+        },{'id':1,
         'name':'食物32',
         'price':'12',
         'image_url':'/images/index/b_2.jpg',
@@ -101,12 +152,13 @@ def editorData222222():
         
         }
         ]},{'name':'类别4','food':[{
+            'id':0,
         'name':'食物41',
         'price':'11',
         'image_url':'/images/index/b_2.jpg',
         
         
-        },{
+        },{'id':1,
         'name':'食物42',
         'price':'12',
         'image_url':'/images/index/b_2.jpg',

@@ -7,9 +7,9 @@ Page({
     activeIndex: 0,
     tapIndex: 0,
     foodList: '',
-    cartList: {},
-    cartPrice: 0,
-    cartNumber: 0,
+    cartList: {   },
+      cartPrice: 0,
+      cartNumber: 0,
     cartBall: {
       show: false,
       x: 0,
@@ -139,16 +139,19 @@ console.log("接受到的foodlist")
         id: food.id,
         name: food.name,
         price: parseFloat(food.price),
-        number: 1
+        number: 1,
+        image_url:food.image_url
       }
     }
     this.shopcartAnimate.show(e)
-    console.log('5555555555555555',cartList)
+    console.log('5555555555555555',cartList,this.data.cartPrice,cartList[id].price)
+
     this.setData({
-      cartList,
+
       cartPrice: this.data.cartPrice + cartList[id].price,
       cartNumber: this.data.cartNumber + 1
     })
+    console.log(343243242342343242343243,this.data.cartList)
   },
   showCartList: function() {
     if (this.data.cartNumber > 0) {
@@ -228,6 +231,7 @@ console.log("接受到的foodlist")
     wx.showLoading({
       title: '正在生成订单...'
     })
+    console.log('3333333333333333333333333333333333')
     fetch('food/order', {
       order: this.data.cartList
     }, 'POST').then(data => {
